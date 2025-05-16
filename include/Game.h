@@ -4,12 +4,14 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <vector>
+#include <memory> // for std::unique_ptr
 #include "Player.h"
 #include "Enemy.h"
 #include "Laser.h"
 
 // Enum for game states
-enum class GameState {
+enum class GameState
+{
     MENU,
     STORY,
     PLAYING,
@@ -18,9 +20,10 @@ enum class GameState {
 };
 
 // Main Game class controlling gameplay, updates, and rendering
-class Game {
+class Game
+{
 public:
-    Game(sf::RenderWindow& window);
+    Game(sf::RenderWindow &window);
 
     // Initialize game resources (textures, sounds, music)
     bool init();
@@ -44,10 +47,10 @@ public:
     void setGameState(GameState state);
 
 private:
-    sf::RenderWindow& window_;
+    sf::RenderWindow &window_;
 
     // Game entities
-    Player player_;
+    Player player_; // dynamically constructed with texture, speed, health
     std::vector<Enemy> enemies_;
     std::vector<Laser> playerLasers_;
     std::vector<Laser> enemyLasers_;
@@ -61,6 +64,11 @@ private:
     // Background and UI
     sf::Texture backgroundTexture_;
     sf::Sprite backgroundSprite_;
+
+    // Font and Text
+    sf::Font font_;
+    sf::Text healthText_;
+    sf::Text scoreText_;
 
     // Audio
     sf::Music backgroundMusic_;
@@ -85,19 +93,22 @@ private:
     const int winCondition_ = 30;
 
     // Private helper functions
-    void spawnEnemies();
+    void spawnEnemies(float deltaTime);
     void updateEnemies(float deltaTime);
     void updateLasers(float deltaTime);
     void checkCollisions();
     void cleanUpLasers();
     void cleanUpEnemies();
-    void playSound(const sf::Sound& sound);
+    void playSound(const sf::Sound &sound);
 
     // Clamp player movement within window bounds
     void clampPlayerPosition();
 
     // Handle transition to game over or win states
     void checkWinLoseConditions();
+
+    // Update health and score UI texts
+    void updateUIText();
 };
 
 #endif // GAME_H

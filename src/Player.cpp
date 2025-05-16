@@ -115,3 +115,7 @@ int Player::getHealth() const {
 bool Player::isAlive() const {
     return isAlive_;
 }
+
+sf::FloatRect Player::getBounds() const {
+    return sprite_.getGlobalBounds();
+}
