@@ -1,10 +1,12 @@
+# Ignore all bin folders recursively
+**/bin/
+
 # Ignore build folders
 /build/
 /CMakeFiles/
 /CMakeCache.txt
 /Makefile
 /*.cmake
-/Spacemen
 
 # Ignore compiled files
 *.o
@@ -33,7 +35,6 @@ Thumbs.db
 
 # Ignore dependency directories
 /node_modules/
-/.vscode/
 
 # Ignore SFML config files
 *.user

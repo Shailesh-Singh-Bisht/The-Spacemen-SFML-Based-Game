@@ -9,33 +9,45 @@ MenuScreen::MenuScreen()
     {
         std::cout << "Failed to load menu background!\n";
     }
-    m_backgroundSprite.setTexture(m_backgroundTexture);
-
-    m_titleText.setString("THE SPACEMEN");
-    m_titleText.setCharacterSize(48);
+    m_backgroundSprite.setTexture(m_backgroundTexture);    m_titleText.setString("THE SPACEMEN");
+    m_titleText.setCharacterSize(72);  // Increased for 1080p
     m_titleText.setFillColor(sf::Color::White);
     m_titleText.setStyle(sf::Text::Bold);
-    m_titleText.setPosition(200, 100); // Adjust as needed
+    
+    // Center the title
+    sf::FloatRect titleBounds = m_titleText.getLocalBounds();
+    m_titleText.setOrigin(titleBounds.left + titleBounds.width/2.0f, 
+                         titleBounds.top + titleBounds.height/2.0f);
+    m_titleText.setPosition(1920/2.0f, 200);  // Top center
 
-    m_startButton.setSize(sf::Vector2f(300, 60));
+    // Center the start button
+    m_startButton.setSize(sf::Vector2f(400, 80));  // Larger for 1080p
     m_startButton.setFillColor(sf::Color(70, 130, 180)); // Steel blue
-    m_startButton.setPosition(250, 250);
+    m_startButton.setOrigin(200, 40);  // Half the button size
+    m_startButton.setPosition(1920/2.0f, 500);  // Center of screen
 
     m_startText.setFont(m_font);
     m_startText.setString("Start Game");
-    m_startText.setCharacterSize(24);
+    m_startText.setCharacterSize(36);  // Larger for 1080p
     m_startText.setFillColor(sf::Color::White);
-    m_startText.setPosition(270, 260);
-
-    m_exitButton.setSize(sf::Vector2f(300, 60));
+    // Center the text in the button
+    sf::FloatRect startTextBounds = m_startText.getLocalBounds();
+    m_startText.setOrigin(startTextBounds.left + startTextBounds.width/2.0f,
+                         startTextBounds.top + startTextBounds.height/2.0f);
+    m_startText.setPosition(1920/2.0f, 500);    m_exitButton.setSize(sf::Vector2f(400, 80));  // Larger for 1080p
     m_exitButton.setFillColor(sf::Color(139, 0, 0)); // Dark red
-    m_exitButton.setPosition(250, 350);
+    m_exitButton.setOrigin(200, 40);  // Half the button size
+    m_exitButton.setPosition(1920/2.0f, 650);  // Below start button
 
     m_exitText.setFont(m_font);
     m_exitText.setString("Exit");
-    m_exitText.setCharacterSize(24);
+    m_exitText.setCharacterSize(36);  // Larger for 1080p
     m_exitText.setFillColor(sf::Color::White);
-    m_exitText.setPosition(270, 360);
+    // Center the text in the button
+    sf::FloatRect exitTextBounds = m_exitText.getLocalBounds();
+    m_exitText.setOrigin(exitTextBounds.left + exitTextBounds.width/2.0f,
+                        exitTextBounds.top + exitTextBounds.height/2.0f);
+    m_exitText.setPosition(1920/2.0f, 650);
 }
 
 void MenuScreen::handleInput(const sf::Event &event)
