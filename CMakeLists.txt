@@ -14,7 +14,8 @@ include_directories(${SFML_INCLUDE_DIR} ${PROJECT_SOURCE_DIR}/include)
 link_directories(${SFML_LIBRARY_DIR})
 
 # Add source files
-file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
+file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp" "${PROJECT_SOURCE_DIR}/*.rc")
+
 
 # Define the executable
 add_executable(${PROJECT_NAME} ${SOURCES})
@@ -30,9 +31,9 @@ target_link_libraries(${PROJECT_NAME}
     sfml-audio
 )
 
-# Output binary to /bin
+# Output binary to /Spacemen
 set_target_properties(${PROJECT_NAME} PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin"
+    RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/Spacemen"
 )
 
 # Copy necessary SFML DLLs for runtime (for ReactOS)
@@ -44,5 +45,5 @@ if(WIN32)
         "${SFML_ROOT}/bin/sfml-audio-2.dll"
         "${SFML_ROOT}/bin/openal32.dll"
     )
-    file(COPY ${SFML_DLLS} DESTINATION "${PROJECT_SOURCE_DIR}/bin")
+    file(COPY ${SFML_DLLS} DESTINATION "${PROJECT_SOURCE_DIR}/Spacemen")
 endif()
