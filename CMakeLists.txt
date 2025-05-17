@@ -1,46 +1,48 @@
 cmake_minimum_required(VERSION 3.13)
-
 project(TheSpacemen VERSION 1.0 LANGUAGES CXX)
 
-# Force 32-bit build (if on 64-bit machine with mingw)
-set(CMAKE_GENERATOR_PLATFORM Win32)
-
-# Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Include directories
-include_directories(
-    "C:/Libraries/SFML-2.1/include"
-    "C:/Libraries/SFML-2.1/include/SFML"
-    "C:/msys64/mingw32/include"
-    ${PROJECT_SOURCE_DIR}/include
-)
+# Set SFML root and paths
+set(SFML_ROOT "C:/Libraries/SFML-2.5.1")
+set(SFML_INCLUDE_DIR "${SFML_ROOT}/include")
+set(SFML_LIBRARY_DIR "${SFML_ROOT}/lib")
 
-# Source files
-file(GLOB SOURCES
-    "${PROJECT_SOURCE_DIR}/src/*.cpp"
-)
+# Add includes
+include_directories(${SFML_INCLUDE_DIR} ${PROJECT_SOURCE_DIR}/include)
+link_directories(${SFML_LIBRARY_DIR})
 
-# Executable
-add_executable(TheSpacemen ${SOURCES})
+# Add source files
+file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
 
-# Link directories (where SFML libs reside)
-link_directories("C:/Libraries/SFML-2.1/lib")
+# Define the executable
+add_executable(${PROJECT_NAME} ${SOURCES})
 
-# Link SFML dynamically (do NOT link sfml-main if you have your own main)
-target_link_libraries(TheSpacemen
+# Use dynamic linking
+add_definitions(-DSFML_DYNAMIC)
+
+# Link SFML libraries
+target_link_libraries(${PROJECT_NAME}
     sfml-graphics
     sfml-window
     sfml-system
+    sfml-audio
 )
 
-# Ensure using dynamic SFML DLLs (not static)
-add_definitions(-DSFML_DYNAMIC)
-
-# Set output directory for built executable (optional)
-set_target_properties(TheSpacemen PROPERTIES
+# Output binary to /bin
+set_target_properties(${PROJECT_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin"
 )
 
-# Optional: Copy SFML DLLs to output directory after build (manual step recommended)
+# Copy necessary SFML DLLs for runtime (for ReactOS)
+if(WIN32)
+    file(GLOB SFML_DLLS
+        "${SFML_ROOT}/bin/sfml-graphics-2.dll"
+        "${SFML_ROOT}/bin/sfml-window-2.dll"
+        "${SFML_ROOT}/bin/sfml-system-2.dll"
+        "${SFML_ROOT}/bin/sfml-audio-2.dll"
+        "${SFML_ROOT}/bin/openal32.dll"
+    )
+    file(COPY ${SFML_DLLS} DESTINATION "${PROJECT_SOURCE_DIR}/bin")
+endif()
