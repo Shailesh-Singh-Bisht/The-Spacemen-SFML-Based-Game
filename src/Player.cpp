@@ -6,7 +6,7 @@ Player::Player()
 {
     loadTextures();
     m_sprite.setTexture(m_texture);  // Only one texture used
-    m_sprite.setPosition(400.f, 550.f);  // Adjust based on window size
+    m_sprite.setPosition(960.f, 980.f);  // Position at bottom center of 1920x1080 screen
 }
 
 void Player::loadTextures() {
@@ -75,7 +75,7 @@ sf::FloatRect Player::getBounds() const {
 
 void Player::reset() {
     m_hp = 100;
-    m_sprite.setPosition(400.f, 500.f); // Example reset position
+    m_sprite.setPosition(960.f, 980.f); // Position at bottom center of 1920x1080 screen
     m_shootCooldown.restart();
 }
 

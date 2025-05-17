@@ -55,7 +55,7 @@ sf::FloatRect Laser::getBounds() const {
 
 bool Laser::isOffScreen() const {
     sf::Vector2f pos = m_sprite.getPosition();
-    return (pos.y < 0 || pos.y > 600); // assuming fixed window height 600px, adjust if needed
+    return (pos.y < 0 || pos.y > 1080); // Updated to match window height
 }
 
 int Laser::getDamage() const {

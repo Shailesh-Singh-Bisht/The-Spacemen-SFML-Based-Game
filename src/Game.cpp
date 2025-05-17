@@ -16,18 +16,16 @@ Game::Game(sf::RenderWindow &window)
     std::cout << "Failed to load game background!\n";
   }
   m_gameBackgroundSprite.setTexture(m_gameBackgroundTexture);
-
   if (!m_audioManager.loadAssets())
   {
     std::cout << "Failed to load audio assets!\n";
   }
-  m_audioManager.playMusic(); // Play background music once at startup
-
+  // Background music will be played when game starts
   m_stateText.setFont(m_font);
-  m_stateText.setCharacterSize(48);
+  m_stateText.setCharacterSize(72);
   m_stateText.setFillColor(sf::Color::Red);
   m_stateText.setStyle(sf::Text::Bold);
-  m_stateText.setPosition(320, 300);
+  m_stateText.setPosition(660, 500); // Centered for 1920x1080
 
   m_healthText.setFont(m_font);
   m_healthText.setCharacterSize(20);
@@ -91,10 +89,25 @@ void Game::update(sf::Time deltaTime)
 
     for (auto &enemy : m_enemies)
       enemy.update(deltaTime);
-    for (auto &laser : m_playerLasers)
-      laser.update(deltaTime);
-    for (auto &laser : m_enemyLasers)
-      laser.update(deltaTime);
+
+    // Update and cleanup off-screen lasers
+    for (auto it = m_playerLasers.begin(); it != m_playerLasers.end();) {
+      it->update(deltaTime);
+      if (it->isOffScreen()) {
+        it = m_playerLasers.erase(it);
+      } else {
+        ++it;
+      }
+    }
+
+    for (auto it = m_enemyLasers.begin(); it != m_enemyLasers.end();) {
+      it->update(deltaTime);
+      if (it->isOffScreen()) {
+        it = m_enemyLasers.erase(it);
+      } else {
+        ++it;
+      }
+    }
 
     checkCollisions();
     spawnEnemies(deltaTime);
@@ -160,6 +173,7 @@ void Game::startGame()
 {
   resetGame();
   m_state = GameState::Playing;
+  m_audioManager.playMusic(); // Start background music when game starts
 }
 
 void Game::resetGame()
@@ -223,31 +237,47 @@ void Game::checkCollisions()
 
 void Game::spawnEnemies(sf::Time deltaTime)
 {
-  if (m_spawnClock.getElapsedTime().asSeconds() > 1.5f)
+  static float spawnTimer = 0.0f;
+  spawnTimer += deltaTime.asSeconds();
+  
+  // Spawn 2 ships every 15 seconds
+  if (spawnTimer >= 15.0f)
   {
-    static std::vector<std::string> enemyTextures = {
-        "assets/images/enemyShip1.png",
-        "assets/images/enemyShip2.png",
-        "assets/images/enemyShip3.png"};
+    static std::vector<sf::Texture> enemyTextures;
+    static bool texturesLoaded = false;
 
-    int index = std::rand() % enemyTextures.size();
-    sf::Texture *texture = new sf::Texture();
-    if (!texture->loadFromFile(enemyTextures[index]))
-    {
-      std::cout << "Failed to load enemy texture\n";
-      delete texture;
-      return;
+    // Load textures only once
+    if (!texturesLoaded) {
+      std::vector<std::string> textureFiles = {
+          "assets/images/enemyShip1.png",
+          "assets/images/enemyShip2.png",
+          "assets/images/enemyShip3.png"
+      };
+      
+      for (const auto& file : textureFiles) {
+        sf::Texture texture;
+        if (!texture.loadFromFile(file)) {
+          std::cout << "Failed to load enemy texture: " << file << "\n";
+          return;
+        }
+        enemyTextures.push_back(texture);
+      }
+      texturesLoaded = true;
     }
 
-    sf::Vector2f position(rand() % 700 + 50, 50);
-    m_enemies.emplace_back(position, *texture);
-    m_spawnClock.restart();
+    // Spawn 2 ships from above the screen
+    for (int i = 0; i < 2; ++i) {
+      int index = std::rand() % enemyTextures.size();
+      // Spawn at random x position above the screen (-50 to ensure they're fully off-screen)
+      sf::Vector2f position(rand() % 1720 + 100, -50); // Keep 100px margin from edges
+      m_enemies.emplace_back(position, enemyTextures[index]);
+    }
+    spawnTimer = 0.0f; // Reset timer
   }
 
   for (auto &enemy : m_enemies)
   {
     enemy.shoot(m_enemyLasers);
-    // Add sound trigger in Enemy::shoot() if needed
   }
 }
 
@@ -257,6 +287,7 @@ void Game::updateGameState()
   {
     m_state = GameState::WinText;
     m_stateText.setString("You Win! Restarting...");
+    m_audioManager.stopMusic(); // Stop background music
     m_audioManager.playSound("win");
     m_stateTextClock.restart();
   }
@@ -265,6 +296,7 @@ void Game::updateGameState()
   {
     m_state = GameState::LoseText;
     m_stateText.setString("Game Over! Restarting...");
+    m_audioManager.stopMusic(); // Stop background music
     m_audioManager.playSound("game_over");
     m_stateTextClock.restart();
   }

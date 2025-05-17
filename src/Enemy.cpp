@@ -32,16 +32,23 @@ Enemy& Enemy::operator=(Enemy&& other) noexcept {
 void Enemy::update(sf::Time deltaTime)
 {
     float dx = m_speed * deltaTime.asSeconds();
+    float dy = (m_speed * 0.5f) * deltaTime.asSeconds(); // Vertical movement at half speed
 
-    if (m_movingRight) {
-        m_sprite.move(dx, 0.f);
-        if (m_sprite.getPosition().x + m_sprite.getGlobalBounds().width >= 1280) {
-            m_movingRight = false;
-        }
+    // Move downward until reaching a certain height
+    if (m_sprite.getPosition().y < 200.f) {
+        m_sprite.move(0.f, dy);
     } else {
-        m_sprite.move(-dx, 0.f);
-        if (m_sprite.getPosition().x <= 0) {
-            m_movingRight = true;
+        // Once at proper height, move side to side
+        if (m_movingRight) {
+            m_sprite.move(dx, 0.f);
+            if (m_sprite.getPosition().x + m_sprite.getGlobalBounds().width >= 1920) {
+                m_movingRight = false;
+            }
+        } else {
+            m_sprite.move(-dx, 0.f);
+            if (m_sprite.getPosition().x <= 0) {
+                m_movingRight = true;
+            }
         }
     }
 }
