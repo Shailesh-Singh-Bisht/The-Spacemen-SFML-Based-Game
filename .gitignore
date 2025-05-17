@@ -1,3 +1,6 @@
+# Ignore the entire 'Spacemen' folder
+/Spacemen/
+
 # Ignore all bin folders recursively
 **/bin/
 
