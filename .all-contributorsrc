@@ -1,0 +1,26 @@
+{
+  "projectName": "The-Spacemen-SFML-Based-Game",
+  "projectOwner": "Shailesh-Singh-Bisht",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "atom",
+  "contributors": [
+    {
+      "login": "Shailesh-Singh-Bisht",
+      "name": "Shailesh Singh Bisht",
+      "avatar_url": "https://avatars.githubusercontent.com/u/107263955?v=4",
+      "profile": "https://shailesh-singh-bisht-portfolio.vercel.app/",
+      "contributions": [
+        "design",
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true
+}
