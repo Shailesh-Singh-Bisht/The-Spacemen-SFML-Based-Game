@@ -41,12 +41,11 @@
 To play **The Spacemen** without building it yourself, simply:
 
 1.  Go to the [Releases](https://github.com/Shailesh-Singh-Bisht/The-Spacemen-SFML-Based-Game/releases/tag/Release) section of the GitHub repository.
-2.  Download the latest `.zip` archive.
-3.  Extract the contents of the `.zip` file to a folder of your choice on your computer.
+2.  Download the latest `.rar` archive.
+3.  Extract the contents of the `.rar` file to a folder of your choice on your computer.
 4.  Navigate into the extracted folder and run **TheSpacemen.exe**.
 
-You're all set to defend the galaxy\!
-
+You're all set to defend the galaxy.
 ---
 
 ## 🧱 Build Instructions
@@ -57,7 +56,7 @@ Before you can build **The Spacemen**, make sure you have the following:
 
 - **C++17 compiler** (e.g., GCC via MinGW on Windows).
 - **CMake ≥ 3.13**.
-- **SFML 2.5.1 (32-bit)**.
+- **SFML 2.5.1 or latest**.
 
 Ensure SFML is installed at `C:/Libraries/SFML-2.5.1/` or adjust the path in `CMakeLists.txt` to match your installation.
 
@@ -130,7 +129,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 For questions, suggestions, or issues, please:
 
 - Open an issue in this repository
-- Reach out through the discussions tab
+- Reach out to me using the my email or social media profiles.
 - Check existing issues before creating new ones
 
 ## Contributors ✨
