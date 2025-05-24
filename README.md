@@ -1,6 +1,6 @@
 # 🚀 The Spacemen
 
-**The Spacemen** is a retro-style 2D vertical space shooter game built using **C++17** and **SFML 2.5.1**. Designed for both fun and nostalgia, it features animated enemies, laser combat, a simple narrative, and audio-visual immersion — all packed into a ReactOS-compatible binary.
+**The Spacemen** is a retro-style 2D vertical space shooter game built using **C++17** and **SFML 2.5.1**. Designed for both fun and nostalgia, it features animated enemies, laser combat, a simple narrative, and audio-visual immersion — all packed into a single exe.
 
 -----
 
