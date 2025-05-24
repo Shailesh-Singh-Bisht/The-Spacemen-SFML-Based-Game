@@ -1,0 +1,18 @@
+Asset Attributions
+
+Audio Effects:
+- All sound effects (.wav and .ogg files) sourced from freesound.org
+  Source: https://freesound.org/
+
+Fonts and Images:
+- Space Shooter Redux asset pack by Kenney
+  Source: https://kenney.nl/assets/space-shooter-redux
+  Includes:
+  - Ship sprites
+  - Laser sprites
+  - UI elements
+  - Game fonts
+
+Background Music:
+- Background music from YouTube
+  Source: https://www.youtube.com/watch?v=UkYzoKJ13sY
