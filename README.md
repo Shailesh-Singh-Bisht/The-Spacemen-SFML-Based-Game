@@ -1,6 +1,6 @@
 # 🚀 The Spacemen
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 **The Spacemen** is a retro-style 2D vertical space shooter game built using **C++17** and **SFML 2.5.1**. Designed for both fun and nostalgia, it features animated enemies, laser combat, a simple narrative, and audio-visual immersion — all packed into a single exe.
@@ -146,6 +146,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://shailesh-singh-bisht-portfolio.vercel.app/"><img src="https://avatars.githubusercontent.com/u/107263955?v=4?s=100" width="100px;" alt="Shailesh Singh Bisht"/><br /><sub><b>Shailesh Singh Bisht</b></sub></a><br /><a href="#design-Shailesh-Singh-Bisht" title="Design">🎨</a> <a href="#maintenance-Shailesh-Singh-Bisht" title="Maintenance">🚧</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/royalhub123"><img src="https://avatars.githubusercontent.com/u/168981505?v=4?s=100" width="100px;" alt="royalhub123"/><br /><sub><b>royalhub123</b></sub></a><br /><a href="https://github.com/Shailesh-Singh-Bisht/The-Spacemen-SFML-Based-Game/commits?author=royalhub123" title="Code">💻</a> <a href="https://github.com/Shailesh-Singh-Bisht/The-Spacemen-SFML-Based-Game/commits?author=royalhub123" title="Tests">⚠️</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Akhilnautiyal5"><img src="https://avatars.githubusercontent.com/u/113812781?v=4?s=100" width="100px;" alt="Akhil Nautiyal"/><br /><sub><b>Akhil Nautiyal</b></sub></a><br /><a href="https://github.com/Shailesh-Singh-Bisht/The-Spacemen-SFML-Based-Game/commits?author=Akhilnautiyal5" title="Code">💻</a> <a href="https://github.com/Shailesh-Singh-Bisht/The-Spacemen-SFML-Based-Game/commits?author=Akhilnautiyal5" title="Tests">⚠️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Vivek-Pokhriyal"><img src="https://avatars.githubusercontent.com/u/202429019?v=4?s=100" width="100px;" alt="Vivek-Pokhriyal"/><br /><sub><b>Vivek-Pokhriyal</b></sub></a><br /><a href="https://github.com/Shailesh-Singh-Bisht/The-Spacemen-SFML-Based-Game/commits?author=Vivek-Pokhriyal" title="Code">💻</a> <a href="https://github.com/Shailesh-Singh-Bisht/The-Spacemen-SFML-Based-Game/commits?author=Vivek-Pokhriyal" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
   <tfoot>
