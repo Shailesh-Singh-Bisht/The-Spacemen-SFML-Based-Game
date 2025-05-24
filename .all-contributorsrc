@@ -19,6 +19,16 @@
         "design",
         "maintenance"
       ]
+    },
+    {
+      "login": "royalhub123",
+      "name": "royalhub123",
+      "avatar_url": "https://avatars.githubusercontent.com/u/168981505?v=4",
+      "profile": "https://github.com/royalhub123",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
