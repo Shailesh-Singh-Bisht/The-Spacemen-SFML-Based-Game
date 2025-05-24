@@ -23,7 +23,7 @@
 
 To play **The Spacemen** without building it yourself, simply:
 
-1.  Go to the [Releases](https://www.google.com/search?q=https://github.com/yourusername/TheSpacemen/releases) section of the GitHub repository.
+1.  Go to the [Releases]() section of the GitHub repository.
 2.  Download the latest `.zip` archive.
 3.  Extract the contents of the `.zip` file to a folder of your choice on your computer.
 4.  Navigate into the extracted folder and run **TheSpacemen.exe**.
